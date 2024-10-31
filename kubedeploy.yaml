@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: healthcare-webapp-deploy
+  labels:
+    app: healthcare-webapp-deploy-lbl
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: healthcare-webapp
+  template:
+    metadata:
+      labels:
+        app: healthcare-webapp
+    spec:
+      containers:
+      - name: healthcare-webapp-container
+        image: abhisorout97/healthcare-webapp
+        ports:
+        - containerPort: 8082
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: healthcare-webapp-np-service
+  labels:
+    app: healthcare-webapp
+spec:
+  selector:
+    app: healthcare-webapp-deploy-lbl
+
+  type: NodePort
+  ports:
+  - nodePort: 31028
+    port: 8082
+    targetPort: 8082
