@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: healthcare-webapp-container
-        image: abhisorout97/myhealthapp:latest
+        image: abhisorout97/myhealthapp
         ports:
         - containerPort: 8082
 ---
