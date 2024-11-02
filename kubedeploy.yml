@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: healthapp-deploy
+  name: medicure-app-deploy
   labels:
-    app: healthapp-app
+    app: medicure-app
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: healthapp-app
+      app: medicure-app
   template:
     metadata:
       labels:
-        app: healthapp-app
+        app: medicure-app
     spec:
       containers:
-      - name: healthapp-container
+      - name: medicure-app-container
         image: abhisorout97/myhealthapp
         ports:
         - containerPort: 8082
@@ -23,12 +23,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: bankapp-eta-np-service
+  name: medicure-app-np-service
   labels:
-    app: healthapp-app
+    app: medicure-app
 spec:
   selector:
-    app: healthapp-app
+    app: medicure-app
 
   type: NodePort
   ports:
