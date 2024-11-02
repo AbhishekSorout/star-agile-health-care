@@ -1,37 +1,37 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: healthcare-webapp-deploy
+  name: healthapp-deploy
   labels:
-    app: healthcare-webapp-deploy-lbl
+    app: healthapp-app
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: healthcare-webapp
+      app: healthapp-app
   template:
     metadata:
       labels:
-        app: healthcare-webapp
+        app: healthapp-app
     spec:
       containers:
-      - name: healthcare-webapp-container
-        image: abhisorout97/myhealthapp
+      - name: healthapp-container
+        image: abhisorout97/healthapp
         ports:
-        - containerPort: 8083
+        - containerPort: 8082
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: healthcare-webapp-np-service
+  name: bankapp-eta-np-service
   labels:
-    app: healthcare-webapp
+    app: healthapp-app
 spec:
   selector:
-    app: healthcare-webapp-deploy-lbl
+    app: healthapp-app
 
   type: NodePort
   ports:
-  - nodePort: 31030
-    port: 8083
-    targetPort: 8083
+  - nodePort: 31030  
+    port: 8082
+    targetPort: 8082
