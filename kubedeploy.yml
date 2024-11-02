@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: medicure-app-container
-        image: abhisorout97/myhealthapp
+        image: abhisorout97/medicure-webapp
         ports:
         - containerPort: 8082
 ---
